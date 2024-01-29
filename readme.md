@@ -26,7 +26,7 @@ Controls:
 To play in Unity Editor, open the project with Unity version 2021.3.10f1 and start playing from the SplashScreen (Assets/Scenes). Alternatively, you can play making a local build.
 To reset the PlayerPrefs (which store the unlocked/locked levels), go to the script LevelLockController.cs (Assets/Scripts) and uncomment line 16, which removes the current PlayerPrefs.
 
-Below you can see a gameplay video:
+Here you can see a gameplay video:
 https://youtu.be/JaXMrNwA1vQ
 
 
