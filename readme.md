@@ -1,11 +1,11 @@
 ## INTRODUCTION
 
-FROGGY PANG is a Pang-inspired game with a frog who can also jump and climb walls. As in Pang, the player's goal is to destroy all bubbles by touching them with the frog's tongue before the time is up. As an extra twist, the scenario rotates 90º every few seconds, reorganizing platforms. 
+FROGGY PANG is a Pang-inspired game with a frog who can jump and climb walls. As in Pang, the player's goal is to destroy all bubbles by touching them with the frog's tongue before the time is up. There are different types of tongues (simple, double, spit projectiles), as well as hidden pickups that give extra points. As an extra twist, the scenario rotates 90º every few seconds, reorganizing platforms. 
 
 ![Screenshot](/Images/Picture8.png)
 ![Screenshot](/Images/Picture9.png)
 
-There are different types of tongues (simple, double, spit projectiles), as well as hidden pickups that give extra points. The game has a total of 7 levels, which unlock progressively as the player beats them. There is a save system to keep track of the unlocked levels.
+The game has a total of 7 levels, which unlock progressively as the player beats them. There is a save system to keep track of the unlocked levels.
 
 ![Screenshot](/Images/Picture2.png)
 
@@ -16,7 +16,7 @@ The game is better played with a controller, but it can also be played with a ke
 
 Controls:
 
-- Movement: WASD / joystick 
+- Movement: WASD / left joystick 
 - Jump: space bar / button south gamepad (A on xbox controller)
 - Shoot: left button mouse / button north gamepad (Y on xbox controller)
 - Dashing: B key / Button east (B on xbox controller)
