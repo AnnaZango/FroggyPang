@@ -22,7 +22,7 @@ Controls:
 - Dashing: B key / Button east (B on xbox controller)
 
 To play in Unity Editor, open the project with Unity version 2021.3.10f1 and start playing from the SplashScreen. Alternatively, you can play making a local build.
-To reset the PlayerPrefs (which store the unlocked/locked levels), go to the script LevelLockController.cs and delete the comment on line LINENUMBER, which removes the current PlayerPrefs.
+To reset the PlayerPrefs (which store the unlocked/locked levels), go to the script LevelLockController.cs (Assets/Scripts) and uncomment line 16, which removes the current PlayerPrefs.
 
 Below you can see a gameplay video:
 https://youtu.be/JaXMrNwA1vQ
