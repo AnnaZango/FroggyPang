@@ -2,7 +2,9 @@
 
 FROGGY PANG is a Pang-inspired game with a frog who can jump and climb walls. As in Pang, the player's goal is to destroy all bubbles by touching them with the frog's tongue before the time is up. There are different types of tongues (simple, double, spit projectiles), as well as hidden pickups that give extra points. As an extra twist, the scenario rotates 90º every few seconds, reorganizing platforms. 
 
+
 ![Screenshot](/Images/Picture8.png)
+
 ![Screenshot](/Images/Picture9.png)
 
 The game has a total of 7 levels, which unlock progressively as the player beats them. There is a save system to keep track of the unlocked levels.
@@ -21,7 +23,7 @@ Controls:
 - Shoot: left button mouse / button north gamepad (Y on xbox controller)
 - Dashing: B key / Button east (B on xbox controller)
 
-To play in Unity Editor, open the project with Unity version 2021.3.10f1 and start playing from the SplashScreen. Alternatively, you can play making a local build.
+To play in Unity Editor, open the project with Unity version 2021.3.10f1 and start playing from the SplashScreen (Assets/Scenes). Alternatively, you can play making a local build.
 To reset the PlayerPrefs (which store the unlocked/locked levels), go to the script LevelLockController.cs (Assets/Scripts) and uncomment line 16, which removes the current PlayerPrefs.
 
 Below you can see a gameplay video:
@@ -35,7 +37,7 @@ The game has been developed using Unity Version 021.3.10f1 and Visual Studio 202
 
 ## ASSETS USED
 
-The game characters and animations (frog, insects, pickups) have been developed by me. The rest of the assets have been developed by third parties (references below).
+The game characters and animations (frog, insects, pickups) have been developed by me. The rest of the assets have been developed by third parties, cited below.
 
 ### Backgrounds:
 - Upkylak, a https://www.freepik.com/
