@@ -23,7 +23,7 @@ Controls:
 - Shoot: left button mouse / button north gamepad (Y on xbox controller)
 - Dashing: B key / Button east (B on xbox controller)
 
-To play in Unity Editor, open the project with Unity version 2021.3.10f1 and start playing from the SplashScreen (Assets/Scenes). Alternatively, you can play making a local build.
+To play in Unity Editor, open the project with Unity version 2021.3.10f1 and start playing from the SplashScreen (Assets/Scenes). Alternatively, you can play making a local build. To do so, go to File/Build Settings, and select "Windos, Mac, Linux" as Platform. On target platform, select "Windows". Finally, click on the "Build and Run" button to make the local build.
 To reset the PlayerPrefs (which store the unlocked/locked levels), go to the script LevelLockController.cs (Assets/Scripts) and uncomment line 16, which removes the current PlayerPrefs.
 
 Here you can see a gameplay video:
