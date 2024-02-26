@@ -143,6 +143,7 @@ public class BallMovement : MonoBehaviour
 
     private void OnDestroy()
     {
+        if(endGameController == null) { return; }
         endGameController.CheckNumberBalls();
     }
 

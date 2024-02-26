@@ -856,7 +856,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 362498602}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!61 &362065932
 BoxCollider2D:
@@ -970,12 +970,12 @@ Transform:
   - {fileID: 2051286901}
   - {fileID: 1865251503}
   - {fileID: 1065475500}
-  - {fileID: 1903434833}
   - {fileID: 846856903}
   - {fileID: 362065931}
-  - {fileID: 1315022237}
   - {fileID: 692179224}
   - {fileID: 2072215259}
+  - {fileID: 1315022237}
+  - {fileID: 1903434833}
   - {fileID: 2075369110}
   - {fileID: 1511339258}
   - {fileID: 195612755}
@@ -1160,7 +1160,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 362498602}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!61 &692179225
 BoxCollider2D:
@@ -1271,7 +1271,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 362498602}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!61 &846856904
 BoxCollider2D:
@@ -1918,7 +1918,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 362498602}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1315022238
 BoxCollider2D:
@@ -3051,7 +3051,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 362498602}
-  m_RootOrder: 6
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1903434834
 BoxCollider2D:
@@ -3526,7 +3526,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 362498602}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!61 &2072215260
 BoxCollider2D:
@@ -3731,7 +3731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 293913659321444436, guid: bbd4edaeb80f5ba46a916cf474a3e66c, type: 3}
-  pickup: {fileID: 4630282658699426790, guid: eb0be1316f90f0d468211d4cf1691993, type: 3}
+  pickup: {fileID: 2322234925607425782, guid: cddc338244fd6a94c9b1ed41d4d2af69, type: 3}
   soundDestruction: {fileID: 1682551301}
 --- !u!1001 &2093938378
 PrefabInstance:

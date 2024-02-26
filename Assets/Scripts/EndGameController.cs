@@ -51,13 +51,14 @@ public class EndGameController : MonoBehaviour
 
     private void WinGame()
     {
+        GameManager.SetGameFinished(true);
         GameManager.SetHasPlayerWon(true);
-        GameManager.SetGameFinished(true); 
         StartCoroutine(ShowPanel());
     }
 
     public void ShowPanelGameOver()
     {
+        if(GameManager.GetIfPlayerWins()) { return; }
         StartCoroutine(ShowPanel());
     }
 
