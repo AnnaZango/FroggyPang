@@ -82,25 +82,23 @@ public class BallMovement : MonoBehaviour
     {
         if (Mathf.Abs(rb.velocity.x) < minForceX) //we want a minimum force X so it is not bumping vertical
         {
-            if (rb.velocity.x >= 0) //going to the right or straight up
-            {
-                rb.velocity = new Vector2(minForceX, rb.velocity.y);
-            }
-            else
-            {
-                rb.velocity = new Vector2(-minForceX, rb.velocity.y);
-            }
+            SetXForceInRange(minForceX);
         }
         else if (Mathf.Abs(rb.velocity.x) > maxForceX) //we want a maximum force X so it is not horizontal
         {
-            if (rb.velocity.x >= 0) //going to the right or straight up
-            {
-                rb.velocity = new Vector2(maxForceX, rb.velocity.y);
-            }
-            else
-            {
-                rb.velocity = new Vector2(-maxForceX, rb.velocity.y);
-            }
+            SetXForceInRange(maxForceX);
+        }
+    }
+
+    private void SetXForceInRange(float forceToSetTo)
+    {
+        if (rb.velocity.x >= 0) //going to the right or straight up
+        {
+            rb.velocity = new Vector2(forceToSetTo, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(-forceToSetTo, rb.velocity.y);
         }
     }
 
@@ -139,9 +137,13 @@ public class BallMovement : MonoBehaviour
         }
         else
         {
-            endGameController.CheckNumberBalls();
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        endGameController.CheckNumberBalls();
     }
 
     private void InstantiateNewBalls()

@@ -39,20 +39,15 @@ public class EndGameController : MonoBehaviour
                                    //player has finished the level successfully
     {        
         if (GameManager.GetIfGameFinished()) { return; } //to prevent being called when time is up!
-        StartCoroutine(CheckIfNoBallsLeft());
-    }
-
-    IEnumerator CheckIfNoBallsLeft() 
-    {
-        yield return new WaitForSeconds(0.1f); //slight delay
+        
         GameObject[] balls = GameObject.FindGameObjectsWithTag("ball"); //check if ball of any kind left.
                                                                         //If so, game is still on
-
         if (balls.Length == 0)
         {
             WinGame();
         }
     }
+
 
     private void WinGame()
     {
