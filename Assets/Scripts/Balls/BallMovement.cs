@@ -26,7 +26,7 @@ public class BallMovement : MonoBehaviour
     [SerializeField] int indexBall = 0;
     [SerializeField] int points = 300;
 
-    PlayerStats playerStats;
+    PlayerPoints playerStats;
 
     bool ballsInstantiated = false;
 
@@ -44,7 +44,7 @@ public class BallMovement : MonoBehaviour
     private void CastReferences()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerStats = FindObjectOfType<PlayerStats>();
+        playerStats = FindObjectOfType<PlayerPoints>();
         endGameController = FindObjectOfType<EndGameController>();
         layerMovement = (1 << LayerMask.NameToLayer("Limits"));
     }

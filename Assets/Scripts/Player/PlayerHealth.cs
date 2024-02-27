@@ -1,31 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
-    //Controls player status in game (health, if it can be hurt, points...)
+    //Controls the player health
 
-    [SerializeField] int points = 0;
     [SerializeField] int health = 1;
-    [SerializeField] Shield shield;
-
-    [SerializeField] TextMeshProUGUI textPoints;
+    Shield shield;
 
     [SerializeField] bool canBeHurt = true;
 
     EndGameController endGameController;
 
-    SoundManager soundManager;
+    [SerializeField] Color32 colorDie;
+
+    [SerializeField] SpriteRenderer[] spritesPlayer;
+    PlayerPoints playerStats;
 
     //sounds
     [SerializeField] AudioSource hurtSound;
-    [SerializeField] AudioSource pickupSound;
-
-    [SerializeField] Color32 colorDie;
-    [SerializeField] SpriteRenderer[] spritesPlayer;
 
     private void OnEnable()
     {
@@ -39,38 +33,14 @@ public class PlayerStats : MonoBehaviour
 
     private void Awake()
     {
-        //destroy the singleton pattern of the music from first scenes
-        soundManager = FindObjectOfType<SoundManager>();
         spritesPlayer = GetComponentsInChildren<SpriteRenderer>(true); //true to get inactive sprites
-        
-        if(soundManager != null)
-        {
-            Destroy(soundManager.gameObject);
-        }
-    }
-
-    void Start()
-    {        
-        UpdatePointsText();
+        shield = GetComponentInChildren<Shield>(true);
+        playerStats = GetComponent<PlayerPoints>();
         endGameController = FindObjectOfType<EndGameController>();
     }
-           
+          
 
-    public void ChangePoints(int pointsToIncrease) 
-    {
-        //called everytime something gives points (destroying ball, point pickup)...
-        if (!GameManager.GetPlayerAlive()) { return; }
-
-        points += pointsToIncrease;
-        UpdatePointsText();
-    }
-
-    private void UpdatePointsText()
-    {
-        textPoints.text = points.ToString();
-    }
-
-    public void GetHurt(int damage) 
+    public void GetHurt(int damage)
     {
         //player has only 1 health point by default. If he has a shield on, balls can hit player 1 or
         //2 times without killing him, as impact ocurs on the shield.
@@ -84,37 +54,30 @@ public class PlayerStats : MonoBehaviour
                 Die();
             }
         }
-
     }
 
-    private void ChangeColorSprites()
+    private void ChangeColorSpritesToDie()
     {
         foreach (SpriteRenderer sprite in spritesPlayer)
         {
             sprite.color = colorDie;
         }
     }
-   
 
-    public void ActivateShield(int shieldHealth)
+
+    public void ActivateShield(int shieldPoints)
     {
-        //The shield covers the player and prevents balls from colliding with him
-        PlayPickupSound();
-        shield.ActivateShield(shieldHealth);
+        shield.ActivateShield(shieldPoints);
+        playerStats.PlayPickupSound();
     }
 
-    public void PlayPickupSound()
-    {
-        pickupSound.Play();
-    }
 
-    
     private void Die()
     {
         GameManager.SetGameFinished(true);
         GameManager.SetPlayerAlive(false);
         GameManager.SetHasPlayerWon(false);
-        ChangeColorSprites();
+        ChangeColorSpritesToDie();
         hurtSound.Play();
         Time.timeScale = 0.2f; //reduce timescale on death. It is set back to 1 when end game panel
                                //appears
@@ -135,5 +98,4 @@ public class PlayerStats : MonoBehaviour
         if (GameManager.GetIfGameFinished()) { return; }
         canBeHurt = true;
     }
-
 }

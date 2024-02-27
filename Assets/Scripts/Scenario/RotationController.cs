@@ -17,10 +17,10 @@ public class RotationController : MonoBehaviour
     [SerializeField] float secondsToRotation = 15;
     [SerializeField] float rotationSpeed = 2;
 
-    PlayerStats playerStats;
+    PlayerHealth playerHealth;
     void Start()
     {
-        playerStats = FindObjectOfType<PlayerStats>();
+        playerHealth = FindObjectOfType<PlayerHealth>();
         StartCoroutine(RotationProcess()); //coroutine called every X time, defined by secondsToRotation
     }
 
@@ -76,7 +76,7 @@ public class RotationController : MonoBehaviour
     private void StartRotation()
     {
         rotate = true;
-        playerStats.SetCanBeHurt(false); //prevent player from getting hurt when rotation is ocurring
+        playerHealth.SetCanBeHurt(false); //prevent player from getting hurt when rotation is ocurring
     }
 
     IEnumerator RotationProcess()

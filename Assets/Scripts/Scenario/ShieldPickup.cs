@@ -15,8 +15,7 @@ public class ShieldPickup : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            other.GetComponent<PlayerStats>().ActivateShield(shieldHealth);
-            other.GetComponent<PlayerStats>().PlayPickupSound();
+            other.GetComponent<PlayerHealth>().ActivateShield(shieldHealth);
             Destroy(gameObject);
         }
     }

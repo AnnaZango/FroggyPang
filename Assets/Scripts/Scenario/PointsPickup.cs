@@ -44,8 +44,8 @@ public class PointsPickup : MonoBehaviour
             GameObject popupPoints = Instantiate(textPopup, transform.position, Quaternion.identity);
             popupPoints.GetComponentInChildren<TextMesh>().text = points.ToString();
 
-            other.GetComponent<PlayerStats>().ChangePoints(points);
-            other.GetComponent<PlayerStats>().PlayPickupSound();
+            other.GetComponent<PlayerPoints>().ChangePoints(points);
+            other.GetComponent<PlayerPoints>().PlayPickupSound();
             Destroy(gameObject);
         }
     }

@@ -10,8 +10,6 @@ public class PlayerShooting : MonoBehaviour
     //Controls player shooting mechanics and current bullet type
 
     [SerializeField] Transform shootingPosition;
-    [SerializeField] GameObject tongue;
-    [SerializeField] GameObject spit;
 
     [SerializeField] GameObject currentBullet;
 
@@ -39,18 +37,11 @@ public class PlayerShooting : MonoBehaviour
         currentWeaponImage.sprite = spritesWeapons[0];
         bulletInfo.SetActive(false);
     }
-
-    
-    void Update()
-    {
-        if (!GameManager.GetPlayerAlive()) { return; }        
-    }
-
-   
+        
 
     public void ShootAction(InputAction.CallbackContext context)
     {
-        if (hasShot) { return; }
+        if (GameManager.GetIfGameFinished() || hasShot) { return; }
 
         GameObject bullet = Instantiate(currentBullet, shootingPosition.position, Quaternion.identity);
         shootSound.Play();
@@ -70,13 +61,17 @@ public class PlayerShooting : MonoBehaviour
 
         if (currentNumBullets <= 0) //back to default
         {
-            currentNumBullets = 0;
-            currentBullet = defaultBullet;
-            currentWeaponImage.sprite = spritesWeapons[0];
-            timeBetweenShots = defaultTimeBetweenShots;
-
-            bulletInfo.SetActive(false);
+            SetToDefaultWeapon();
         }
+    }
+
+    private void SetToDefaultWeapon()
+    {
+        currentNumBullets = 0;
+        currentBullet = defaultBullet;
+        currentWeaponImage.sprite = spritesWeapons[0];
+        timeBetweenShots = defaultTimeBetweenShots;
+        bulletInfo.SetActive(false);
     }
 
     private void ResetShooting() //allow shooting again

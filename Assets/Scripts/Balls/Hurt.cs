@@ -9,7 +9,7 @@ public class Hurt : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            other.GetComponent<PlayerStats>().GetHurt(-1);
+            other.GetComponent<PlayerHealth>().GetHurt(-1);
         }
     }
 }

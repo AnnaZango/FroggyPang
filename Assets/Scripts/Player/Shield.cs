@@ -7,7 +7,7 @@ public class Shield : MonoBehaviour
     // It is attached to the player's shield (a child from the player) and it controls its
     // functionality. 
 
-    [SerializeField] int currentHealth = 1; //it can be 1 or 2 depending on shield type (normal or super)
+    [SerializeField] int currentShieldPoints = 1; //it can be 1 or 2 depending on shield type (normal or super)
     [SerializeField] Color32 colorSuperShield; //dark color, more protection
     [SerializeField] Color32 colorNormalShield; //light color, less protective
     SpriteRenderer spriteRenderer;
@@ -22,8 +22,8 @@ public class Shield : MonoBehaviour
     {
         if(other.gameObject.tag== "ball")
         {
-            currentHealth--;
-            if (currentHealth <= 0)
+            currentShieldPoints--;
+            if (currentShieldPoints <= 0)
             {
                 gameObject.SetActive(false);
             }
@@ -35,13 +35,13 @@ public class Shield : MonoBehaviour
         }
     }
 
-    public void ActivateShield(int shieldHealth) //it gets the health (1 or 2) from pickup
+    public void ActivateShield(int shieldPoints) //it gets the health (1 or 2) from pickup
     {
         //called when colliding with shield pickup, it activates the shield Game Object.
-        if(shieldHealth < currentHealth) { return; } 
+        if(shieldPoints < currentShieldPoints) { return; } 
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentHealth = shieldHealth;
-        if (shieldHealth > 1)
+        currentShieldPoints = shieldPoints;
+        if (shieldPoints > 1)
         {
             spriteRenderer.color = colorSuperShield;
         }

@@ -28,7 +28,7 @@ public class BulletPickup : MonoBehaviour
             //Passess on the bullet characteristics and self destroys
             playerShooting.SetCurrentBulletProperties(bulletAssociated, timeBetweenShots, numBullets,
                 bulletIndex);
-            other.GetComponent<PlayerStats>().PlayPickupSound();
+            other.GetComponent<PlayerPoints>().PlayPickupSound();
             Destroy(gameObject);
         }
     }
