@@ -11,14 +11,13 @@ public class PlayerShooting : MonoBehaviour
 
     [SerializeField] Transform shootingPosition;
 
-    [SerializeField] GameObject currentBullet;
+    GameObject currentBullet;
 
-    [SerializeField] float defaultTimeBetweenShots = 1f;
+    float defaultTimeBetweenShots = 1f;
+    float timeBetweenShots = 1f; //modifiable depending on bullet type
     [SerializeField] GameObject defaultBullet;
 
-    [SerializeField] float timeBetweenShots = 1f; //modifiable depending on bullet type
-
-    [SerializeField] int currentNumBullets = 0;
+    int currentNumBullets = 0;
     [SerializeField] GameObject bulletInfo; //text and image bullet, only active if weapon not default
     [SerializeField] TextMeshProUGUI textBullets;
 

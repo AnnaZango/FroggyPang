@@ -141,12 +141,16 @@ public class ToadMovement : MonoBehaviour
 
     public void MoveAction(InputAction.CallbackContext context) 
     {
+        if(GameManager.GetIfGameFinished()) { return; }
+
         inputX = context.ReadValue<Vector2>().x;
         inputY = context.ReadValue<Vector2>().y;
     }
 
     public void JumpAction(InputAction.CallbackContext context)
-    {        
+    {
+        if (GameManager.GetIfGameFinished()) { return; }
+
         if (context.performed && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
@@ -240,6 +244,14 @@ public class ToadMovement : MonoBehaviour
         canDash = true;
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.GetComponent<ICollectable>() != null)
+        {
+            other.gameObject.GetComponent<ICollectable>().Collect();
+        }
+        
+    }
+
 
 }

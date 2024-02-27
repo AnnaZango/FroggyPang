@@ -9,14 +9,10 @@ public class PlayerPoints : MonoBehaviour
     //Controls player points
 
     [SerializeField] int points = 0;
-
     [SerializeField] TextMeshProUGUI textPoints;
 
     SoundManager soundManager;
-
-    //sounds
     [SerializeField] AudioSource pickupSound;
-
 
     private void Awake()
     {    

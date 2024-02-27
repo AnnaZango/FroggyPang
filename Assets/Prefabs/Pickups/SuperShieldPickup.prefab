@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 973944924744998711}
   - component: {fileID: 1821270362513328673}
   m_Layer: 11
-  m_Name: ShuperShieldPickup
+  m_Name: SuperShieldPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2ebedfa5b988241aa7d84cd86e2cdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldHealth: 2
+  shieldPoints: 2
 --- !u!58 &973944924744998711
 CircleCollider2D:
   m_ObjectHideFlags: 0

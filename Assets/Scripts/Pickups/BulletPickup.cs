@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletPickup : MonoBehaviour
+public class BulletPickup : MonoBehaviour, ICollectable
 {
     // It controls the bullet pickups, and it passes on the new bullet properties: new bullet GO,
     // time between shots, number of bullets available, index of the bullet type.
@@ -13,23 +13,21 @@ public class BulletPickup : MonoBehaviour
     [SerializeField] int bulletIndex = 1;
 
     PlayerShooting playerShooting;
+    PlayerPoints playerPoints;
 
     
     void Start()
     {
         playerShooting = FindObjectOfType<PlayerShooting>();
+        playerPoints = FindObjectOfType<PlayerPoints>();
     }
 
-   
-    private void OnTriggerEnter2D(Collider2D other)
+
+    public void Collect()
     {
-        if(other.gameObject.tag == "Player")
-        {
-            //Passess on the bullet characteristics and self destroys
-            playerShooting.SetCurrentBulletProperties(bulletAssociated, timeBetweenShots, numBullets,
+        playerShooting.SetCurrentBulletProperties(bulletAssociated, timeBetweenShots, numBullets,
                 bulletIndex);
-            other.GetComponent<PlayerPoints>().PlayPickupSound();
-            Destroy(gameObject);
-        }
+        playerPoints.PlayPickupSound();
+        Destroy(gameObject);
     }
 }

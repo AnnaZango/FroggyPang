@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PointsPickup : MonoBehaviour
+public class PointsPickup : MonoBehaviour, ICollectable
 {
     //Controls point pickups. They appear when a destructible element is destroyed. It has a 
     //self destruction component attached to it, so after a few seconds, it disappears
@@ -12,6 +12,7 @@ public class PointsPickup : MonoBehaviour
     float timeAlive;
     Animator animator;
     SelfDestroy selfDestroy;
+    PlayerPoints playerPoints;
 
     [SerializeField] GameObject textPopup;
 
@@ -19,12 +20,12 @@ public class PointsPickup : MonoBehaviour
     {
         selfDestroy = GetComponent<SelfDestroy>();
         animator = GetComponentInChildren<Animator>();
+        playerPoints = FindObjectOfType<PlayerPoints>();
     }
     void Start()
     {
         timeAlive = selfDestroy.GetTimeToSelfDestruction();
     }
-
     
     void Update()
     {
@@ -36,17 +37,13 @@ public class PointsPickup : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void Collect()
     {
-        if(other.gameObject.tag == "Player")
-        {
-            //intsantiate popup message to notify player of the points achieved
-            GameObject popupPoints = Instantiate(textPopup, transform.position, Quaternion.identity);
-            popupPoints.GetComponentInChildren<TextMesh>().text = points.ToString();
+        GameObject popupPoints = Instantiate(textPopup, transform.position, Quaternion.identity);
+        popupPoints.GetComponentInChildren<TextMesh>().text = points.ToString();
 
-            other.GetComponent<PlayerPoints>().ChangePoints(points);
-            other.GetComponent<PlayerPoints>().PlayPickupSound();
-            Destroy(gameObject);
-        }
+        playerPoints.ChangePoints(points);
+        playerPoints.PlayPickupSound();
+        Destroy(gameObject);
     }
 }

@@ -6,16 +6,15 @@ public class PlayerHealth : MonoBehaviour
 {
     //Controls the player health
 
-    [SerializeField] int health = 1;
+    int health = 1;
     Shield shield;
-
-    [SerializeField] bool canBeHurt = true;
+    bool canBeHurt = true;
 
     EndGameController endGameController;
 
     [SerializeField] Color32 colorDie;
 
-    [SerializeField] SpriteRenderer[] spritesPlayer;
+    SpriteRenderer[] spritesPlayer;
     PlayerPoints playerStats;
 
     //sounds
@@ -67,7 +66,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void ActivateShield(int shieldPoints)
     {
-        shield.ActivateShield(shieldPoints);
+        shield.GainShieldPoints(shieldPoints);
         playerStats.PlayPickupSound();
     }
 

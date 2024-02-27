@@ -716,6 +716,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &3121393242464357409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2623566597895910148}
+  - component: {fileID: 919990080659498616}
+  - component: {fileID: 495414304132041752}
+  m_Layer: 10
+  m_Name: Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2623566597895910148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121393242464357409}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.8899998, z: 0}
+  m_LocalScale: {x: 29, y: 29, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5897524463525497437}
+  m_Father: {fileID: 5897524464006036538}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &919990080659498616
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121393242464357409}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.085
+--- !u!114 &495414304132041752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121393242464357409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80aea393de2f1545bf19084aca59bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPoints: 0
+  colorSuperShield:
+    serializedVersion: 2
+    rgba: 2868838900
+  colorNormalShield:
+    serializedVersion: 2
+    rgba: 1610743733
 --- !u!1 &3386107383559135549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,10 +1316,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5897524463525497437}
   - component: {fileID: 5897524463525497435}
-  - component: {fileID: 5897524463525497434}
-  - component: {fileID: 5897524463525497432}
   m_Layer: 10
-  m_Name: Shield
+  m_Name: ShieldSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1263,13 +1330,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5897524463525497436}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.89, z: 0}
-  m_LocalScale: {x: 29, y: 29, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5897524464006036538}
-  m_RootOrder: 3
+  m_Father: {fileID: 2623566597895910148}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5897524463525497435
 SpriteRenderer:
@@ -1323,41 +1390,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5897524463525497434
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5897524463525497436}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.085
---- !u!114 &5897524463525497432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5897524463525497436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c80aea393de2f1545bf19084aca59bb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentShieldPoints: 1
-  colorSuperShield:
-    serializedVersion: 2
-    rgba: 2868838900
-  colorNormalShield:
-    serializedVersion: 2
-    rgba: 1610743733
 --- !u!1 &5897524463532062806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1627,7 +1659,7 @@ Transform:
   - {fileID: 5897524464266696822}
   - {fileID: 5897524463532062807}
   - {fileID: 5897524462843318085}
-  - {fileID: 5897524463525497437}
+  - {fileID: 2623566597895910148}
   - {fileID: 2061673475571619615}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1741,11 +1773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingPosition: {fileID: 5897524462843318085}
-  currentBullet: {fileID: 0}
-  defaultTimeBetweenShots: 1
   defaultBullet: {fileID: 3173687462975861709, guid: dc1fbd9060e822e46b746560626dcf36, type: 3}
-  timeBetweenShots: 0.2
-  currentNumBullets: 10
   bulletInfo: {fileID: 0}
   textBullets: {fileID: 0}
   spritesWeapons:
@@ -1753,7 +1781,7 @@ MonoBehaviour:
   - {fileID: -595972410, guid: ba5a3fb52ab55394cb69feaf1c90e1a5, type: 3}
   - {fileID: -479495409, guid: ba5a3fb52ab55394cb69feaf1c90e1a5, type: 3}
   currentWeaponImage: {fileID: 0}
-  shootSound: {fileID: 0}
+  shootSound: {fileID: 2061673474738001372}
 --- !u!114 &5897524464006036535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1860,12 +1888,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2283ba04f0d6ec45848d7168398ce12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
-  canBeHurt: 1
   colorDie:
     serializedVersion: 2
     rgba: 4285624778
-  spritesPlayer: []
   hurtSound: {fileID: 2061673475664841548}
 --- !u!1 &5897524464266696825
 GameObject:

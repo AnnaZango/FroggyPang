@@ -1074,7 +1074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 293913659321444436, guid: bbd4edaeb80f5ba46a916cf474a3e66c, type: 3}
-  pickup: {fileID: 0}
+  pickup: {fileID: 8267271817379850924, guid: 6747c73d7c63a7446b9e4fb85257b717, type: 3}
   soundDestruction: {fileID: 897937964}
 --- !u!61 &912164849
 BoxCollider2D:
@@ -1938,17 +1938,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1558781471 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5897524463525497432, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
-  m_PrefabInstance: {fileID: 1855444830}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c80aea393de2f1545bf19084aca59bb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1564631507 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1607285988419374187, guid: 72fbdaf8caf3c8b4d87d3b9878162cb4, type: 3}
@@ -2443,10 +2432,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1128060618}
     - target: {fileID: 5897524464006036534, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
-      propertyPath: shootSound
-      value: 
-      objectReference: {fileID: 1855444833}
-    - target: {fileID: 5897524464006036534, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
       propertyPath: textBullets
       value: 
       objectReference: {fileID: 1883718417}
@@ -2454,10 +2439,6 @@ PrefabInstance:
       propertyPath: currentWeaponImage
       value: 
       objectReference: {fileID: 1110547043}
-    - target: {fileID: 5897524464006036537, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
-      propertyPath: jumpSound
-      value: 
-      objectReference: {fileID: 1855444834}
     - target: {fileID: 5897524464006036538, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2503,55 +2484,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5897524464006036539, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
-      propertyPath: hurtSound
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5897524464006036539, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
       propertyPath: textPoints
       value: 
       objectReference: {fileID: 1661234110}
-    - target: {fileID: 5897524464006036539, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
-      propertyPath: pickupSound
-      value: 
-      objectReference: {fileID: 1855444832}
     - target: {fileID: 5897524464006036543, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8037461820074062759, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
-      propertyPath: shield
-      value: 
-      objectReference: {fileID: 1558781471}
-    - target: {fileID: 8037461820074062759, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
-      propertyPath: hurtSound
-      value: 
-      objectReference: {fileID: 1855444831}
-    - target: {fileID: 8037461820074062759, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
-      propertyPath: colorDie.rgba
-      value: 4285624778
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
---- !u!82 &1855444831 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2061673475664841548, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
-  m_PrefabInstance: {fileID: 1855444830}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1855444832 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2061673475810427226, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
-  m_PrefabInstance: {fileID: 1855444830}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1855444833 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2061673474738001372, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
-  m_PrefabInstance: {fileID: 1855444830}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1855444834 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2061673475121808727, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
-  m_PrefabInstance: {fileID: 1855444830}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1876025371
 GameObject:
   m_ObjectHideFlags: 0
