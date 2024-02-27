@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3173687462975861710}
   - component: {fileID: -3155906170921764170}
   m_Layer: 9
-  m_Name: Tongue
+  m_Name: NormalTongue
   m_TagString: bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,7 +173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   increment: 25
   timeLapse: 1
-  parent: {fileID: 0}
 --- !u!50 &3173687463859560676
 Rigidbody2D:
   serializedVersion: 4

@@ -494,7 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 293913659321444436, guid: bbd4edaeb80f5ba46a916cf474a3e66c, type: 3}
-  pickup: {fileID: 0}
+  pickup: {fileID: 8267271817379850924, guid: 6747c73d7c63a7446b9e4fb85257b717, type: 3}
   soundDestruction: {fileID: 418627447}
 --- !u!61 &97216400
 BoxCollider2D:
@@ -621,7 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 293913659321444436, guid: bbd4edaeb80f5ba46a916cf474a3e66c, type: 3}
-  pickup: {fileID: 0}
+  pickup: {fileID: 3853338890565203494, guid: f9a375bad2986fc46a8c56748e62dba6, type: 3}
   soundDestruction: {fileID: 418627447}
 --- !u!61 &158062014
 BoxCollider2D:
@@ -1072,7 +1072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 293913659321444436, guid: bbd4edaeb80f5ba46a916cf474a3e66c, type: 3}
-  pickup: {fileID: 0}
+  pickup: {fileID: 3853338890565203494, guid: f9a375bad2986fc46a8c56748e62dba6, type: 3}
   soundDestruction: {fileID: 418627447}
 --- !u!61 &502898199
 BoxCollider2D:

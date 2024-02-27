@@ -10,21 +10,12 @@ public class Tongue : Bullet
     SpriteRenderer sprite;
     [SerializeField] float increment = 0.1f;
     [SerializeField] float timeLapse = 1;
-    //[SerializeField] GameObject parent;
 
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
     }
-
-    //void Start()
-    //{
-    //    parent = gameObject.transform.parent.gameObject;
-       
-    //    sprite = GetComponent<SpriteRenderer>();
-    //}
-
-    
+        
     void Update()
     {
         //tiled sprite which increases in size progressively
@@ -32,13 +23,4 @@ public class Tongue : Bullet
         sprite.size = new Vector2((currentSizeX + (increment * Time.deltaTime * timeLapse)), sprite.size.y);
     }
 
-    //private void OnCollisionEnter2D(Collision2D other)
-    //{
-    //    if(other.gameObject.tag == "ball")
-    //    {
-    //        //when colliding with ball, call respective methods to instantiate new balls and destroy
-    //        other.gameObject.GetComponent<BallMovement>().CollideWithBullet();
-    //    }
-    //    Destroy(parent);
-    //}
 }

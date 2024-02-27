@@ -38,7 +38,7 @@ public class Shield : MonoBehaviour
     public void ActivateShield(int shieldHealth) //it gets the health (1 or 2) from pickup
     {
         //called when colliding with shield pickup, it activates the shield Game Object.
-        if(shieldHealth < currentHealth) { return; }
+        if(shieldHealth < currentHealth) { return; } 
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = shieldHealth;
         if (shieldHealth > 1)

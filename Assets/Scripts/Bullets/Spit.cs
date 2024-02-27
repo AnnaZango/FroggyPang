@@ -8,13 +8,6 @@ public class Spit : Bullet
 
     [SerializeField] float speed;
     [SerializeField] float timeLapse = 1;
-    //[SerializeField] GameObject parent;
-
-    //void Start()
-    //{
-    //    parent = gameObject.transform.parent.gameObject;
-    //}
-
     
     void Update()
     {
@@ -22,14 +15,4 @@ public class Spit : Bullet
         float currentYPos = transform.position.y;
         transform.position = new Vector3(transform.position.x, (currentYPos + (speed * timeLapse * Time.deltaTime)));
     }
-
-    //private void OnCollisionEnter2D(Collision2D other)
-    //{
-    //    if (other.gameObject.tag == "ball")
-    //    {
-    //        //when colliding with ball, call respective methods to instantiate new balls and destroy
-    //        other.gameObject.GetComponent<BallMovement>().CollideWithBullet();
-    //    }
-    //    Destroy(parent);
-    //}
 }

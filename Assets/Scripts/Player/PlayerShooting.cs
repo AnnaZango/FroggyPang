@@ -93,7 +93,7 @@ public class PlayerShooting : MonoBehaviour
         timeBetweenShots = timeLapseShots;
         currentNumBullets = numBullets;
 
-        //index 1, weapon spit; index 2, split tongue
+        //index 0, normal; index 1, weapon spit; index 2, split tongue
         currentWeaponImage.sprite = spritesWeapons[bulletIndex];
         UpdateNumberBullets();
         bulletInfo.SetActive(true);
