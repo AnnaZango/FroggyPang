@@ -7,22 +7,8 @@ public static class GameManager
     // This script controls general states of the game, such as if the player is alive or if game has
     // ended
 
-
-    private static bool IsPlayerAlive;
     private static bool IsGameFinished;
     private static bool playerWins;
-
-
-    public static void SetPlayerAlive(bool isAlive)
-    {
-        IsPlayerAlive = isAlive;
-    }
-    public static bool GetPlayerAlive()
-    {
-        return IsPlayerAlive;
-    }
-
-
 
     public static void SetGameFinished(bool isGameOver)
     {
@@ -32,8 +18,6 @@ public static class GameManager
     {
         return IsGameFinished;
     }
-
-
 
     public static void SetHasPlayerWon(bool hasWon)
     {

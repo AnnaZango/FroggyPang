@@ -61,7 +61,6 @@ public class ToadMovement : MonoBehaviour
 
     void Start()
     {
-        GameManager.SetPlayerAlive(true);
         GameManager.SetGameFinished(false);
     }
 
@@ -73,7 +72,6 @@ public class ToadMovement : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezePositionX;
             return; 
         }
-        if (!GameManager.GetPlayerAlive()) { return; }
 
         if (isDashing || isWallJumping) { return; }
 
@@ -100,7 +98,7 @@ public class ToadMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (GameManager.GetIfGameFinished()) { return; }
-        if (!GameManager.GetPlayerAlive()) { return; }
+        //if (!GameManager.GetPlayerAlive()) { return; }
 
         if (isDashing || isWallJumping) { return; }
 

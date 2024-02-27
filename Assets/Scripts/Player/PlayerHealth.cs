@@ -43,7 +43,7 @@ public class PlayerHealth : MonoBehaviour
     {
         //player has only 1 health point by default. If he has a shield on, balls can hit player 1 or
         //2 times without killing him, as impact ocurs on the shield.
-        if (!GameManager.GetPlayerAlive()) { return; }
+        if (GameManager.GetIfGameFinished()) { return; }
 
         if (canBeHurt)
         {
@@ -74,7 +74,6 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         GameManager.SetGameFinished(true);
-        GameManager.SetPlayerAlive(false);
         GameManager.SetHasPlayerWon(false);
         ChangeColorSpritesToDie();
         hurtSound.Play();

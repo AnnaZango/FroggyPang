@@ -27,7 +27,7 @@ public class MovingElement : MonoBehaviour
             currentIndex++;
             if(currentIndex >= points.Length)
             {
-                currentIndex = 0; //it goes back to 0 one
+                currentIndex = 0; 
             }
         }
 

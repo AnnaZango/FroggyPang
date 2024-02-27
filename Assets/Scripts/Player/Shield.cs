@@ -33,9 +33,9 @@ public class Shield : MonoBehaviour
             currentPoints--;
             if (currentPoints <= 0)
             {
+                currentPoints = 0;
                 transform.GetChild(0).gameObject.SetActive(false); 
                 shieldCollider.enabled = false;
-                //gameObject.SetActive(false);
             }
             else
             {
@@ -52,7 +52,6 @@ public class Shield : MonoBehaviour
 
     public void GainShieldPoints(int shieldPointsToAdd) //it gets the health (1 or 2) from pickup
     {
-        //if(shieldPoints < currentShieldPoints) { return; } 
         int totalPoints = Mathf.Clamp((currentPoints + shieldPointsToAdd), 0, 2);
         currentPoints = totalPoints;
 

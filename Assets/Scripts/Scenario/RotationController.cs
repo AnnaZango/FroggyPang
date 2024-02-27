@@ -6,14 +6,13 @@ public class RotationController : MonoBehaviour
 {   
     //It controls the rotation of the scenario every few seconds.
 
-    [SerializeField] float rotationValue;
-    [SerializeField] float temp;
+    [SerializeField] float rotationToAdd;
 
-    [SerializeField] bool rotate = false;
+    [SerializeField] bool rotationEnabled = false;
     [SerializeField] float rotationAngleGoal = 90;
     [SerializeField] float rotationStep = 90;
     [SerializeField] float currentAngle = 0;
-    [SerializeField] float currentAngleInt;
+    [SerializeField] float currentAngleRounded;
     [SerializeField] float secondsToRotation = 15;
     [SerializeField] float rotationSpeed = 2;
 
@@ -21,23 +20,12 @@ public class RotationController : MonoBehaviour
     void Start()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
-        StartCoroutine(RotationProcess()); //coroutine called every X time, defined by secondsToRotation
+        StartCoroutine(RotationCoroutine()); //coroutine called every X time, defined by secondsToRotation
     }
-
-    private void OnEnable()
-    {
-        EndGameController.OnGameFinished += StopRotations; //prevent rotation when game ends
-    }
-
-    private void OnDisable()
-    {
-        EndGameController.OnGameFinished -= StopRotations;
-    }
-
 
     void Update()
     {
-        if (rotate)
+        if (rotationEnabled)
         {
             Rotate();
 
@@ -50,49 +38,38 @@ public class RotationController : MonoBehaviour
 
     private void Rotate()
     {
-        rotationValue = Mathf.Lerp(0f, rotationStep, Time.deltaTime * rotationSpeed);
-        gameObject.transform.Rotate(new Vector3(0, 0, rotationValue));
-        currentAngle += rotationValue;
+        rotationToAdd = Mathf.Lerp(0f, rotationStep, Time.deltaTime * rotationSpeed);
+        gameObject.transform.Rotate(new Vector3(0, 0, rotationToAdd));
+        currentAngle += rotationToAdd;
     }
 
     private void FinishRotation()
     {
-        currentAngleInt = ((int)currentAngle / 10) * 10; //to round to nearest 10
-        gameObject.transform.eulerAngles = new Vector3(0, 0, currentAngleInt);
-        currentAngle = currentAngleInt;
+        currentAngleRounded = ((int)currentAngle / 10) * 10; //to round to nearest 10
+        gameObject.transform.eulerAngles = new Vector3(0, 0, currentAngleRounded);
+        currentAngle = currentAngleRounded;
 
-        rotate = false;
+        rotationEnabled = false;
 
         rotationAngleGoal = currentAngle + rotationStep;
 
-        if (Mathf.Abs(currentAngle) >= 360)
+        if(rotationAngleGoal > 360)
         {
-            currentAngle = 0; //reset angle back to 0
+            currentAngle = 0;
             gameObject.transform.eulerAngles = new Vector3(0, 0, currentAngle);
             rotationAngleGoal = rotationStep;
         }
     }
 
-    private void StartRotation()
-    {
-        rotate = true;
-        playerHealth.SetCanBeHurt(false); //prevent player from getting hurt when rotation is ocurring
-    }
-
-    IEnumerator RotationProcess()
+    IEnumerator RotationCoroutine()
     {
         yield return new WaitForSeconds(secondsToRotation);
         if (!GameManager.GetIfGameFinished())
         {
-            StartRotation();
-            StartCoroutine(RotationProcess()); //calls itself to repeat every X seconds
+            rotationEnabled = true;
+            playerHealth.SetCanBeHurt(false); //prevent hurting player while rotating
+            StartCoroutine(RotationCoroutine()); //calls itself to repeat every X seconds
         }
     }
 
-    private void StopRotations()
-    {
-        //Debug.Log("Stop rotations!");
-        //StopCoroutine(RotationProcess());
-        //StopCoroutine("RotationProcess");
-    }
 }

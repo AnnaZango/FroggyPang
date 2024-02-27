@@ -34,7 +34,7 @@ public class PlayerPoints : MonoBehaviour
     public void ChangePoints(int pointsToIncrease) 
     {
         //called everytime something gives points (destroying ball, point pickup)...
-        if (!GameManager.GetPlayerAlive()) { return; }
+        if (GameManager.GetIfGameFinished()) { return; }
 
         points += pointsToIncrease;
         UpdatePointsText();
