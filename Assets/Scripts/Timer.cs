@@ -8,10 +8,10 @@ public class Timer : MonoBehaviour
 {
     // It controls the time the player has to finish each level.
 
-
     [SerializeField] int totalSeconds = 60;
-    [SerializeField] int secondsLeft;
     [SerializeField] TextMeshProUGUI timeText;
+
+    int secondsLeft;
     
     public static Action OnTimeFinished; 
 

@@ -9,25 +9,28 @@ public class PlayerShooting : MonoBehaviour
 {
     //Controls player shooting mechanics and current bullet type
 
+    [Header("Shooting variables")]
     [SerializeField] Transform shootingPosition;
+    [SerializeField] GameObject defaultBullet;
+
+    [Header("UI")]
+    [SerializeField] GameObject bulletInfo; //text and image bullet, only active if weapon not default
+    [SerializeField] TextMeshProUGUI textBullets;
+    [SerializeField] Sprite[] spritesWeapons; //3 different types
+    [SerializeField] Image currentWeaponImage; //0 is default
+
+    [Header("Sounds")]
+    [SerializeField] AudioSource shootSound;
 
     GameObject currentBullet;
 
     float defaultTimeBetweenShots = 1f;
     float timeBetweenShots = 1f; //modifiable depending on bullet type
-    [SerializeField] GameObject defaultBullet;
 
     int currentNumBullets = 0;
-    [SerializeField] GameObject bulletInfo; //text and image bullet, only active if weapon not default
-    [SerializeField] TextMeshProUGUI textBullets;
-
-    [SerializeField] Sprite[] spritesWeapons; //3 different types
-    [SerializeField] Image currentWeaponImage; //0 is default
 
     bool hasShot = false;
 
-    //sounds:
-    [SerializeField] AudioSource shootSound;
 
     void Start()
     {        

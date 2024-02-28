@@ -8,7 +8,7 @@ public class ShieldPickup : MonoBehaviour, ICollectable
     // upon colliding with player. Shield pickups have a bouncy material which makes them jump when
     // colliding with something, making it more difficult for the player to grab it
 
-    [SerializeField] int shieldPoints = 1; // 1 or 2
+    [Range(1,2)][SerializeField] int shieldPoints = 1; // 1 or 2
     Shield shield;
     PlayerPoints playerPoints;
     int maxPointsShield = 2;

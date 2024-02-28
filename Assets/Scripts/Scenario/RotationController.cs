@@ -3,23 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RotationController : MonoBehaviour
-{   
+{
     //It controls the rotation of the scenario every few seconds.
 
-    [SerializeField] float rotationToAdd;
-
-    [SerializeField] bool rotationEnabled = false;
-    [SerializeField] float rotationAngleGoal = 90;
     [SerializeField] float rotationStep = 90;
-    [SerializeField] float currentAngle = 0;
-    [SerializeField] float currentAngleRounded;
     [SerializeField] float secondsToRotation = 15;
     [SerializeField] float rotationSpeed = 2;
 
+    private float rotationToAdd;
+    private float rotationAngleGoal = 90;
+    private float currentAngle = 0;
+    private float currentAngleRounded;
+
+    private bool rotationEnabled = false;
+
     PlayerHealth playerHealth;
-    void Start()
+
+    private void Awake()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
+    }
+
+    void Start()
+    {        
         StartCoroutine(RotationCoroutine()); //coroutine called every X time, defined by secondsToRotation
     }
 

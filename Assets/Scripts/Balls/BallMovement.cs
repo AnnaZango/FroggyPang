@@ -13,26 +13,27 @@ public class BallMovement : MonoBehaviour
     [SerializeField] float maxForceX = 9;
     [SerializeField] float forceY = 10;
 
-
+    [Header("Ball characteristics")]
     [SerializeField] float distanceRadiusBall = 1;
-    [SerializeField] bool hitDown;
+    [SerializeField] bool beginningBall = false;
+    [SerializeField] int indexBall = 0;
+    [SerializeField] int points = 300;
+
+    [Header("Other variables")]
+    [SerializeField] GameObject[] ballsPrefabs;
+    [SerializeField] GameObject popupText;
+
+    private bool hitDown;
 
     Rigidbody2D rb;
     LayerMask layerMovement;
 
-    [SerializeField] bool beginningBall = false;
-
-    [SerializeField] GameObject[] ballsPrefabs;
-    [SerializeField] int indexBall = 0;
-    [SerializeField] int points = 300;
 
     PlayerPoints playerStats;
 
     bool ballsInstantiated = false;
 
     EndGameController endGameController;
-
-    [SerializeField] GameObject popupText;
 
     AudioSource soundPop;
 
@@ -46,6 +47,7 @@ public class BallMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerStats = FindObjectOfType<PlayerPoints>();
         endGameController = FindObjectOfType<EndGameController>();
+        soundPop = GameObject.FindGameObjectWithTag("bubbleSound").GetComponent<AudioSource>();
         layerMovement = (1 << LayerMask.NameToLayer("Limits"));
     }
 
@@ -58,7 +60,6 @@ public class BallMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(startingForceX, 0);
         }
-        soundPop = GameObject.FindGameObjectWithTag("bubbleSound").GetComponent<AudioSource>();
     }
 
     

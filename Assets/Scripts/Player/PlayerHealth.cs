@@ -6,19 +6,17 @@ public class PlayerHealth : MonoBehaviour
 {
     //Controls the player health
 
+    [SerializeField] Color32 colorDie;
+    [SerializeField] AudioSource hurtSound;
+
     int health = 1;
     Shield shield;
     bool canBeHurt = true;
 
     EndGameController endGameController;
 
-    [SerializeField] Color32 colorDie;
-
     SpriteRenderer[] spritesPlayer;
     PlayerPoints playerStats;
-
-    //sounds
-    [SerializeField] AudioSource hurtSound;
 
     private void OnEnable()
     {

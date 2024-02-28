@@ -9,12 +9,12 @@ public class PointsPickup : MonoBehaviour, ICollectable
 
     [SerializeField] int points = 600;
     [SerializeField] float timeToStartFlickering = 2;
+    [SerializeField] GameObject textPopup;
+
     float timeAlive;
     Animator animator;
     SelfDestroy selfDestroy;
     PlayerPoints playerPoints;
-
-    [SerializeField] GameObject textPopup;
 
     private void Awake()
     {

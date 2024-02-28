@@ -10,16 +10,21 @@ public class EndGameController : MonoBehaviour
     [SerializeField] GameObject panelVictory;
     [SerializeField] GameObject panelLose;
 
+    [SerializeField] AudioSource soundWin;
+    [SerializeField] AudioSource soundLose;
+
     SceneController sceneController;
 
     public static Action OnGameFinished;
 
-    [SerializeField] AudioSource soundWin;
-    [SerializeField] AudioSource soundLose;
 
-    void Start()
+    private void Awake()
     {
         sceneController = FindObjectOfType<SceneController>();
+    }
+
+    void Start()
+    {        
         panelLose.SetActive(false);
         panelVictory.SetActive(false);
     }

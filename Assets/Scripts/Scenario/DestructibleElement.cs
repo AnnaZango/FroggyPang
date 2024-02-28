@@ -8,7 +8,6 @@ public class DestructibleElement : MonoBehaviour
 
     [SerializeField] GameObject particles;
     [SerializeField] GameObject pickup;
-
     [SerializeField] AudioSource soundDestruction;
 
     private void OnCollisionEnter2D(Collision2D other)

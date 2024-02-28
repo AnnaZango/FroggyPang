@@ -15,13 +15,11 @@ public class BulletPickup : MonoBehaviour, ICollectable
     PlayerShooting playerShooting;
     PlayerPoints playerPoints;
 
-    
-    void Start()
+    private void Awake()
     {
         playerShooting = FindObjectOfType<PlayerShooting>();
         playerPoints = FindObjectOfType<PlayerPoints>();
     }
-
 
     public void Collect()
     {

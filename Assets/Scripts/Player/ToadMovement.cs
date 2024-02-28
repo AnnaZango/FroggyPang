@@ -10,22 +10,18 @@ public class ToadMovement : MonoBehaviour
     // using Events on Player Input
 
 
-    [Header("X and Y movement")]
-    [SerializeField] float inputX;
-    [SerializeField] float inputY;
+    [Header("Gravity and Speed")]    
     [SerializeField] float normalGravity = 7;
     [SerializeField] float speed;
-    private bool isFacingRight = true;
+    float inputX;
+    float inputY;
 
     [Header("Dashing variables")]
-    private bool canDash = true;
-    private bool isDashing = false;
     [SerializeField] float dashingPower = 25f;
     [SerializeField] float dashingTime = 0.2f;
     [SerializeField] float dashingCooldown = 1f;
 
     [Header("Wall sliding/moving variables")]
-    [SerializeField] bool isWallMoving = false;
     [SerializeField] float wallGravity = 0;
     //[SerializeField] float wallSlidingSpeed = 2f; //use if sliding speed instead of gravity
     [SerializeField] float radiusWallCheck = 0.2f;
@@ -34,27 +30,33 @@ public class ToadMovement : MonoBehaviour
     [Header("Jumping variables")]
     [SerializeField] float jumpingPower;
     [SerializeField] float jumpingPowerWall;
-    [SerializeField] bool isGrounded = true;
-    [SerializeField] float groundCheckDistance = 0.5f;
-    [SerializeField] bool isWallJumping = false;
-    [SerializeField] float jumpCounterWall = 0;
+    [SerializeField] float groundCheckDistance = 0.5f;  
     [SerializeField] float jumpCoyoteTimeWall = 0.3f;
-
-    [SerializeField] float jumpCounterGround = 0;
     [SerializeField] float jumpCoyoteTimeGround = 0.2f;
 
+
+    private bool canDash = true;
+    private bool isDashing = false;
+    private bool isWallMoving = false;
+    private bool isFacingRight = true;
+    private bool isWallJumping = false;
+
+
+    private float jumpCounterWall = 0;
+    private float jumpCounterGround = 0;
 
     private Rigidbody2D rb;
     LayerMask layerLimits;
 
-    [SerializeField] Animator animator;
+    Animator animator;
 
-    //sounds:
+    [Header("Sounds")]
     [SerializeField] AudioSource jumpSound;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
         layerLimits = (1 << LayerMask.NameToLayer("Limits"));
     }
     
@@ -67,16 +69,8 @@ public class ToadMovement : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.GetIfGameFinished()) 
-        {
-            rb.constraints = RigidbodyConstraints2D.FreezePositionX;
-            return; 
-        }
+        if (GameManager.GetIfGameFinished() || isDashing || isWallJumping) { return; }
 
-        if (isDashing || isWallJumping) { return; }
-
-        isGrounded = IsGrounded(); //visible in the inspector, for debugging purposes
-        
         WallMovement(); //when on a wall, it can also move in the Y direction
 
         Flip(); //when moving left or right
@@ -98,14 +92,49 @@ public class ToadMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (GameManager.GetIfGameFinished()) { return; }
-        //if (!GameManager.GetPlayerAlive()) { return; }
 
         if (isDashing || isWallJumping) { return; }
 
         rb.velocity = new Vector2(inputX * speed, rb.velocity.y);
     }
 
-    
+    public void MoveAction(InputAction.CallbackContext context)
+    {
+        if (GameManager.GetIfGameFinished()) { return; }
+
+        inputX = context.ReadValue<Vector2>().x;
+        inputY = context.ReadValue<Vector2>().y;
+    }
+
+    public void JumpAction(InputAction.CallbackContext context)
+    {
+        if (GameManager.GetIfGameFinished()) { return; }
+
+        if (context.performed && IsGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            animator.SetTrigger("jump");
+            jumpSound.Play();
+        }
+        if (isWallMoving && context.performed)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPowerWall);
+            animator.SetTrigger("jump");
+            jumpSound.Play();
+        }
+        if (context.canceled && rb.velocity.y > 0) //jump higher by pressing jump button longer
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        }
+    }
+
+    public void DashAction(InputAction.CallbackContext context)
+    {
+        //it allows a fast movement in left/right direction
+        if (!canDash) { return; }
+        StartCoroutine(Dash());
+    }
+
 
     private void Flip()
     {
@@ -137,43 +166,7 @@ public class ToadMovement : MonoBehaviour
         }        
     }
 
-    public void MoveAction(InputAction.CallbackContext context) 
-    {
-        if(GameManager.GetIfGameFinished()) { return; }
-
-        inputX = context.ReadValue<Vector2>().x;
-        inputY = context.ReadValue<Vector2>().y;
-    }
-
-    public void JumpAction(InputAction.CallbackContext context)
-    {
-        if (GameManager.GetIfGameFinished()) { return; }
-
-        if (context.performed && isGrounded)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            animator.SetTrigger("jump");
-            jumpSound.Play();
-        }
-        if(isWallMoving && context.performed)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPowerWall);
-            animator.SetTrigger("jump");
-            jumpSound.Play();
-        }
-        if (context.canceled && rb.velocity.y > 0) //jump higher by pressing jump button longer
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
-    }
-
-    public void DashAction(InputAction.CallbackContext context)
-    {
-        //it allows a fast movement in left/right direction
-        if (!canDash) { return; }
-        StartCoroutine(Dash());
-    }
-
+    
     private bool IsOnWall()
     {
         return Physics2D.OverlapCircle(wallCheck.position, radiusWallCheck, layerLimits);
@@ -211,19 +204,8 @@ public class ToadMovement : MonoBehaviour
             rb.gravityScale = normalGravity; //reset gravity to normal as no longer sticking to wall
         }
     }
-        
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "limits")
-        {
-            //we set velocity to 0 right when we collide to a wall, so player doesn't move up or
-            //down, as it sticks to wall.
-            rb.velocity = Vector2.zero; 
-        }
-    }
+       
     
-
     private IEnumerator Dash()
     {
         //coroutine for dashing, with a cooldown time
@@ -240,6 +222,17 @@ public class ToadMovement : MonoBehaviour
 
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "limits")
+        {
+            //we set velocity to 0 right when we collide to a wall, so player doesn't move up or
+            //down, as it sticks to wall.
+            rb.velocity = Vector2.zero;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

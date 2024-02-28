@@ -1761,12 +1761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1feb5f441b2aebb4bb549e685d48e8cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationToAdd: 0
-  rotationEnabled: 0
-  rotationAngleGoal: 90
   rotationStep: 90
-  currentAngle: 0
-  currentAngleRounded: 0
   secondsToRotation: 15
   rotationSpeed: 1
 --- !u!1001 &1269130618
@@ -2401,7 +2396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 141bf58e56894744389bed3243e88b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalSeconds: 300
+  totalSeconds: 30
   secondsLeft: 0
   timeText: {fileID: 77746288}
 --- !u!4 &1811121833
@@ -2426,6 +2421,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 495414304132041752, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
+      propertyPath: currentPoints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897524463525497436, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5897524464006036534, guid: 0861119681fe91140a46dc674e4eaf52, type: 3}
       propertyPath: bulletInfo
       value: 
